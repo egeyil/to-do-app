@@ -1,12 +1,11 @@
-//This files allows us to access to our database wherever we want
 import { PrismaClient } from '@prisma/client'
 
 declare global {
-  var prisma: PrismaClient;
+  // allow global `var` declarations
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClient
 }
 
-export const { prisma } = global;
+export const prisma = global.prisma
 
-if (process.env.NODE_ENV !== 'production') {
-  global.prisma = prisma;
-}
+if (process.env.NODE_ENV !== 'production') global.prisma = prisma
