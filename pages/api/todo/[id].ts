@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'DELETE') {
     const todo = await prisma.todo.delete({
       where: {
-        id:Number(toDoId),
+        id: Number(toDoId),
       }
     })
     res.status(200).json(todo)

@@ -3,9 +3,8 @@ import { useState } from 'react';
 import { prisma } from '../lib/prisma';
 import Head from 'next/head';
 import Image from 'next/image';
-import { setFlagsFromString } from 'v8';
-import styles from '../styles/Home.module.css';
 import {useRouter} from 'next/router';
+import ToDoItem from '../components/todoitem.component';
 
 interface Todos {
   todos: {
@@ -69,9 +68,9 @@ const Home = ({ todos }: Todos) => {
     }
   };
 
-  const handleDelete = async (data: FormData) => {
+  const handleDelete = async (id: string) => {
     try {
-      deleteToDo(data.id);
+      deleteToDo(id);
     } catch (error) {
       console.log('error', error);
     }
@@ -112,28 +111,8 @@ const Home = ({ todos }: Todos) => {
           </div>
         </form>
         <div>
-          {todos.map((todo) => (
-            <form
-              key={todo.id}
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit(form);
-              }}>
-              <div className='rounded mt-12 w-full px-5 py-3 bg-veryLightGray flex items-center'>
-                <input
-                  type='checkbox'
-                  className='appearance-none transition-all duration-150 rounded-full h-6 w-6 cursor-pointer border border-solid border-veryDarkGrey hover:border-veryDarkGrayishBlue focus:ring-transparent checked:focus:ring-transparent'
-                />
-                <input
-                  type='text'
-                  className='ml-5 py-1 w-9/12 border-none cursor-pointer text-veryDarkGrayishBlue caret-brightBlue bg-veryLightGray  hover:placeholder:text-veryDarkGrayishBlue focus:ring-transparent focus-visible:border-none focus-visible:outline-none'
-                  placeholder='Create a new todo...'
-                  value={todo.content}
-                  onChange={(e) => setForm({ ...form, content: e.target.value })}
-                />
-                <button onClick={() => handleDelete(todo)}>Delete</button>
-              </div>
-            </form>
+          {todos?.map((todo) => (
+            <ToDoItem key={todo.id} content={todo.content} completed={todo.completed} handleDelete={() => {handleDelete(todo.id)}} handleSubmit={() => {handleSubmit(todo)}}/>
           ))}
         </div>
       </div>
