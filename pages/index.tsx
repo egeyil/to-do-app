@@ -60,7 +60,7 @@ const Home = ({ todos }: Todos) => {
     }
   }
 
-  async function updateToDo(data: FormData) {
+  async function updateToDo(data: { id: string; completed: boolean, content: string }) {
     try {
       fetch(`http://localhost:3000/api/todo/${data.id}`, {
         body: JSON.stringify(data),
@@ -75,6 +75,10 @@ const Home = ({ todos }: Todos) => {
       console.log(error);
     }
   }
+
+  // useEffect(() => {
+  //   createToDo(form);
+  // },[form.completed])
 
   return (
     <div className='bg-bgImgLight bg-veryLightGrayishBlue dark:bg-bgImgLight bg-no-repeat bg-contain bg-fixed h-screen'>
@@ -116,7 +120,7 @@ const Home = ({ todos }: Todos) => {
         </form>
         <div className='rounded w-full mt-6 bg-veryLightGray overflow-hidden shadow-lg'>
           {todos?.map(({ id, content, completed }) => (
-            <ToDoItem key={id} content={content} completed={completed} id={id} handleUpdate={() => {}} handleDelete={() => deleteToDo(id)} />
+            <ToDoItem key={id} content={content} completed={completed} id={id} handleUpdate={updateToDo} handleDelete={() => deleteToDo(id)} />
           ))}
         </div>
       </div>
@@ -133,6 +137,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       id: true,
       completed: true,
     },
+    orderBy: {
+      id: 'asc',
+    }
   });
 
   return {
