@@ -1,10 +1,11 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { prisma } from '../lib/prisma';
 import Head from 'next/head';
 import Image from 'next/image';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import ToDoItem from '../components/todoitem.component';
+import { create } from 'domain';
 
 interface Todos {
   todos: {
@@ -13,7 +14,6 @@ interface Todos {
     completed: boolean;
   }[];
 }
-
 interface FormData {
   content: string;
   id: string;
@@ -26,9 +26,9 @@ const Home = ({ todos }: Todos) => {
 
   const refreshData = () => {
     router.replace(router.asPath);
-  }
+  };
 
-  async function create(data: FormData) {
+  async function createToDo(data: FormData) {
     try {
       fetch('http://localhost:3000/api/create', {
         body: JSON.stringify(data),
@@ -54,30 +54,30 @@ const Home = ({ todos }: Todos) => {
         method: 'DELETE',
       }).then(() => {
         refreshData();
-      })
+      });
     } catch (error) {
       console.log(error);
     }
   }
 
-  const handleSubmit = async (data: FormData) => {
+  async function updateToDo(data: FormData) {
     try {
-      create(data);
+      fetch(`http://localhost:3000/api/todo/${data.id}`, {
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'PUT',
+      }).then(() => {
+        refreshData();
+      });
     } catch (error) {
-      console.log('error', error);
+      console.log(error);
     }
-  };
-
-  const handleDelete = async (id: string) => {
-    try {
-      deleteToDo(id);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
+  }
 
   return (
-    <div className='bg-bgImgLight bg-veryLightGray dark:bg-bgImgLight bg-no-repeat bg-contain bg-fixed h-screen'>
+    <div className='bg-bgImgLight bg-veryLightGrayishBlue dark:bg-bgImgLight bg-no-repeat bg-contain bg-fixed h-screen'>
       <div className='mx-auto max-w-lg pt-16'>
         <div className='flex justify-between'>
           <h1 className='text-veryLightGrayishBlue text-4xl font-semibold tracking-widest'>TODO</h1>
@@ -94,25 +94,29 @@ const Home = ({ todos }: Todos) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit(form);
+            createToDo(form);
           }}>
           <div className='rounded mt-12 w-full px-5 py-3 bg-veryLightGray flex items-center'>
             <input
               type='checkbox'
+              checked={form.completed}
               className='appearance-none transition-all duration-150 rounded-full h-6 w-6 cursor-pointer border border-solid border-veryDarkGrey hover:border-veryDarkGrayishBlue focus:ring-transparent checked:focus:ring-transparent'
+              onChange={() => {
+                setForm({ ...form, completed: !form.completed });
+              }}
             />
             <input
               type='text'
               className='ml-5 py-1 w-9/12 border-none cursor-pointer text-veryDarkGrayishBlue caret-brightBlue bg-veryLightGray  hover:placeholder:text-veryDarkGrayishBlue focus:ring-transparent focus-visible:border-none focus-visible:outline-none'
               placeholder='Create a new todo...'
-              value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
+              value={form.content}
             />
           </div>
         </form>
-        <div>
-          {todos?.map((todo) => (
-            <ToDoItem key={todo.id} content={todo.content} completed={todo.completed} handleDelete={() => {handleDelete(todo.id)}} handleSubmit={() => {handleSubmit(todo)}}/>
+        <div className='rounded w-full mt-6 bg-veryLightGray overflow-hidden shadow-lg'>
+          {todos?.map(({ id, content, completed }) => (
+            <ToDoItem key={id} content={content} completed={completed} id={id} handleUpdate={() => {}} handleDelete={() => deleteToDo(id)} />
           ))}
         </div>
       </div>
