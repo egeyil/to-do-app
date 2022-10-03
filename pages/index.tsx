@@ -1,68 +1,14 @@
 import type { GetServerSideProps } from 'next';
-// import { Dispatch, SetStateAction } from 'react';
 import { prisma } from '../lib/prisma';
 import { useRouter } from 'next/router';
 import ToDoItem from '../components/todoitem.component';
-import { ITodos, IToDoData } from '../types';
+import { ITodos} from '../types';
 import Header from '../components/header.component';
 import CreateToDo from '../components/createToDo.component';
 import { createToDo, deleteToDo, updateToDo } from '../lib/apiCalls';
 
 const Home = ({ todos }: ITodos) => {
   const router = useRouter();
-
-  // const refreshData = () => {
-  //   router.replace(router.asPath);
-  // };
-
-  // async function createToDo(data: IToDoData, setForm: Dispatch<SetStateAction<IToDoData>>) {
-  //   try {
-  //     if (data.content === '') return;
-  //     fetch('http://localhost:3000/api/create', {
-  //       body: JSON.stringify(data),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       method: 'POST',
-  //     }).then(() => {
-  //       setForm({ completed: false, content: '', id: '' });
-  //       refreshData();
-  //     });
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // }
-
-  // async function deleteToDo(id: string) {
-  //   try {
-  //     fetch(`http://localhost:3000/api/todo/${id}`, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       method: 'DELETE',
-  //     }).then(() => {
-  //       refreshData();
-  //     });
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // }
-
-  // async function updateToDo(data: IToDoData) {
-  //   try {
-  //     fetch(`http://localhost:3000/api/todo/${data.id}`, {
-  //       body: JSON.stringify(data),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       method: 'PUT',
-  //     }).then(() => {
-  //       refreshData();
-  //     });
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // }
 
   return (
     <main className='bg-bgImgLight bg-veryLightGrayishBlue dark:bg-bgImgLight bg-no-repeat bg-contain bg-fixed h-screen'>
