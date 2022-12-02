@@ -3,13 +3,15 @@ import { Dispatch, SetStateAction } from 'react';
 import { ITodos, IToDoData } from '../types';
 
 const refreshData = (router: NextRouter) => {
-  router.replace(router.asPath);
+  router.push(router.asPath, router.asPath, {
+    scroll: false,
+  });
 };
 
 export async function createToDo(router: NextRouter, data: IToDoData, setForm: Dispatch<SetStateAction<IToDoData>>) {
   try {
     if (data.content === '') return;
-    fetch('http://localhost:3000/api/create', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/create`, {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +28,7 @@ export async function createToDo(router: NextRouter, data: IToDoData, setForm: D
 
 export async function deleteToDo(router: NextRouter, id: string) {
   try {
-    fetch(`http://localhost:3000/api/todo/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/todo/${id}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -41,12 +43,30 @@ export async function deleteToDo(router: NextRouter, id: string) {
 
 export async function updateToDo(router: NextRouter, data: IToDoData) {
   try {
-    fetch(`http://localhost:3000/api/todo/${data.id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/todo/${data.id}`, {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
       method: 'PUT',
+    }).then(() => {
+      refreshData(router);
+    });
+  } catch (error) {
+    alert(error);
+  }
+}
+
+export async function clearCompleted(router: NextRouter, idArr: string[]) {
+  try {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/todo/clear-completed`, {
+      body: JSON.stringify({
+        idArr: idArr
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'DELETE',
     }).then(() => {
       refreshData(router);
     });

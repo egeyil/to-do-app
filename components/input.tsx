@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ICreateTodoProps, IToDoData } from "../types";
 
-const CreateToDo = ({ handleCreate, router }: ICreateTodoProps) => {
+const Input = ({ handleCreate, router }: ICreateTodoProps) => {
   const [form, setForm] = useState<IToDoData>({ completed: false, content: '', id: '' });
 
   return (
@@ -31,4 +31,4 @@ const CreateToDo = ({ handleCreate, router }: ICreateTodoProps) => {
   );
 };
 
-export default CreateToDo;
+export default Input;
