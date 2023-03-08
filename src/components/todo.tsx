@@ -1,3 +1,4 @@
+"use client"
 const Todo = ({ handleClick }: { handleClick: () => void }) => {
 
 
