@@ -1,37 +1,10 @@
-import {createSlice} from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from "@/lib/store"
-
-// // Define a type for the slice state
-// interface TodoState {
-//   content: string,
-//   completed: boolean
-// }
-//
-// // Define the initial state using that type
-// const initialState: TodoState = {
-//   content: "",
-//   completed: false
-// }
-
-// export const todoSlice = createSlice({
-//   name: 'todo',
-//   initialState: {
-//     content: "",
-//     completed: false
-//   },
-//   reducers: {
-//     changeContent: (state, action) => {
-//       state.content = action.payload;
-//     }
-//   }
-// })
-
-// export const {changeContent} = todosSlice.actions
+import type {PayloadAction} from '@reduxjs/toolkit'
+import {createSlice, nanoid} from '@reduxjs/toolkit'
+import type {RootState} from "@/lib/store"
 
 // Define a type for the slice state
 interface Todo {
-  id: string,
+  id?: string,
   content: string,
   completed: boolean
 }
@@ -55,10 +28,28 @@ export const todosSlice = createSlice({
   name: 'todos',
   initialState: initialState,
   reducers: {
-
+    addTodo: {
+      // The reducer function - this is where the state is mutated
+      reducer(state, action: PayloadAction<Todo>) {
+        state.push(action.payload)
+      },
+      // Prepare a payload for the reducer - this is optional and prepares the payload for the reducer,
+      // so that we don't have to do it in the component when calling the action
+      prepare(content: string, completed: boolean) {
+        return {
+          payload: {
+            id: nanoid(),
+            content,
+            completed
+          }
+        }
+      }
+    }
   }
 })
 
 export const selectAllTodos = (state: RootState) => state.todos
+
+export const {addTodo} = todosSlice.actions
 
 export default todosSlice.reducer

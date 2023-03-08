@@ -9,13 +9,13 @@ const TodoList = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="">
+    <article className="overflow-hidden rounded-md">
       {todos.map((todo) => {
         return (
           <Todo key={todo.id} todo={todo}/>
         )
       })}
-    </div>
+    </article>
   )
 }
 
