@@ -2,7 +2,7 @@ import {prisma} from "@/lib/prisma";
 import {NextRequest} from "next/server";
 
 export async function GET(request: NextRequest) {
-  // Get all todos
+  // Get all to-dos
   const todos = await prisma.todo.findMany()
   return new Response(JSON.stringify(todos), {
     headers: { 'content-type': 'application/json' },
@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  // Create a new todo
+  // Create a new to-do
   const { content, completed } = await request.json();
   const todo = await prisma.todo.create({
     data: {

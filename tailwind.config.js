@@ -16,7 +16,7 @@ module.exports = {
         lmVeryDarkGrayishBlue: "hsl(235, 19%, 35%)",
         dmVeryDarkBlue: "hsl(235, 21%, 11%)",
         dmVeryDarkDesaturatedBlue: "hsl(235, 24%, 19%)",
-        dmLightGrayishBlue: "hsl(234, 39%, 85%)",
+        dmLightGrayishBlue: "hsl(235, 39%, 85%)",
         dmLightGrayishBlueHover: "hsl(236, 33%, 92%)",
         dmDarkGrayishBlue: "hsl(234, 11%, 52%)",
         dmVeryDarkGrayishBlue: "hsl(233, 14%, 35%)",
