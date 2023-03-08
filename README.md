@@ -46,7 +46,7 @@ Users should be able to:
 - [Vercel](https://vercel.com/dashboard) - Hosting
 - Semantic HTML5 markup
 - Next-Auth for authentication
-- Prisma and MySQL for database - hosted on PlanetScale
+- Prisma and PostgreSQL for database - hosted on SupaBase
 
 ### What I learned
 **Note: fill here**
