@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       colors: {
         primaryBrightBlue: "hsl(220, 98%, 61%)",
-        checkBackground: "linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%)",
+        checkFrom: "hsl(192, 100%, 67%)",
+        checkTo: "hsl(280, 87%, 65%)",
         lmVeryLightGray: "hsl(0, 0%, 98%)",
         lmVeryLightGrayishBlue: "hsl(236, 33%, 92%)",
         lmLightGrayishBlue: "hsl(233, 11%, 84%)",
@@ -24,5 +25,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

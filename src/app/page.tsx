@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Todo from "@/components/todo";
+import TodoList from "@/features/todo/todoList";
+import TodoProvider from "@/features/todo/todoProvider";
+import CreateTodo from "@/features/todo/createTodo";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <article className="z-20 mx-auto mt-20 flex w-full max-w-[550px] flex-col px-4 sm:w-1/2 sm:px-0">
-      <div className="mb-10 flex w-full items-start justify-between">
+      <div className="mb-12 flex w-full items-start justify-between">
         <h1 className="text-3xl font-bold tracking-widest text-white">
           T O D O
         </h1>
@@ -20,13 +22,10 @@ export default function Home() {
           />
         </button>
       </div>
-      <div className="mb-6">
-        {/*<Todo*/}
-        {/*  handleClick={() => {*/}
-        {/*    console.log("clicked");*/}
-        {/*  }}*/}
-        {/*/>*/}
-      </div>
+      <TodoProvider>
+        <CreateTodo />
+        <TodoList />
+      </TodoProvider>
     </article>
   );
 }

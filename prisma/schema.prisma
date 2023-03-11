@@ -28,4 +28,5 @@ model Todo {
 //   name      String?
 //   password  String
 //   todos     Todo[]
+//   theme     String   @default("none")
 // }

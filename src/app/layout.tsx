@@ -19,8 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-lmVeryLightGray text-lmVeryDarkGrayishBlue dark:bg-dmVeryDarkDesaturatedBlue dark:text-dmLightGrayishBlue">
-        <main className={"min-h-screen w-full"}>
+      <body className="overflow-y-hidden bg-lmVeryLightGray text-lmVeryDarkGrayishBlue dark:bg-dmVeryDarkBlue dark:text-dmLightGrayishBlue">
+        <main className={"w-full"}>
           {/* Background images */}
           <div className="fixed top-0 left-0 -z-50 w-screen">
             <div className="-z-50 dark:hidden">
