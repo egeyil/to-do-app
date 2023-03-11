@@ -1,17 +1,23 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { useAppDispatch } from "@/lib/hooks";
-import { addTodo } from "@/features/todo/todosSlice";
+// import { useAppDispatch } from "@/lib/hooks";
+// import { addTodo } from "@/features/todo/todosSlice";
 import { BiCheck } from "react-icons/bi";
+import { useCreateTodoMutation } from "@/features/api/apiSlice";
 
-const createTodo = () => {
+const CreateTodo = () => {
   const [content, setContent] = useState("");
   const [completed, setCompleted] = useState(false);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  const [createTodo] = useCreateTodoMutation();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     console.log("submitting");
-    dispatch(addTodo(content, completed));
+    // dispatch(addTodo(content, completed));
+    createTodo({
+      content: content,
+      completed: completed
+    });
     setContent("");
     setCompleted(false);
   };
@@ -59,4 +65,4 @@ const createTodo = () => {
   );
 };
 
-export default createTodo;
+export default CreateTodo;

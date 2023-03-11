@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   // Create a new to-do
   const { content, completed } = await request.json();
+  console.log(content, completed)
   const todo = await prisma.todo.create({
     data: {
       content,

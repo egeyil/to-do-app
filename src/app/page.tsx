@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import TodoList from "@/features/todo/todoList";
-import TodoProvider from "@/features/todo/todoProvider";
 import CreateTodo from "@/features/todo/createTodo";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,10 +21,8 @@ export default function Home() {
           />
         </button>
       </div>
-      <TodoProvider>
-        <CreateTodo />
-        <TodoList />
-      </TodoProvider>
+      <CreateTodo />
+      <TodoList />
     </article>
   );
 }

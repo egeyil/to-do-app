@@ -3,31 +3,40 @@ import { FormEvent, useState } from "react";
 import { BiCheck, BiX } from "react-icons/bi";
 import { useAppDispatch } from "@/lib/hooks";
 import { addTodo, deleteTodo } from "@/features/todo/todosSlice";
+import type { Todo } from "@prisma/client";
+import {
+  useCreateTodoMutation,
+  useUpdateTodoMutation,
+  useDeleteTodoMutation
+} from "@/features/api/apiSlice";
+import { usePathname } from "next/navigation";
 
-const Todo = ({
-  todo,
-}: {
-  todo: {
-    content: string;
-    completed: boolean;
-    id: string
-  };
-}) => {
+const Todo = ({ todo }: { todo: Todo }) => {
   const [content, setContent] = useState(todo.content);
   const [completed, setCompleted] = useState(todo.completed);
+
+  const [updateTodo] = useUpdateTodoMutation();
+  const [deleteTodo] = useDeleteTodoMutation();
 
   const dispatch = useAppDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     console.log("submitting");
-    dispatch(addTodo(content, completed));
+    // dispatch(addTodo(content, completed));
+    updateTodo({
+      content: content,
+      completed: completed
+    });
     setContent("");
     setCompleted(false);
   };
 
   const handleDelete = (id: string) => {
     console.log("deleting");
-    dispatch(deleteTodo(id));
+    // dispatch(deleteTodo(id));
+    deleteTodo({
+      id: id
+    });
   };
 
   return (
