@@ -2,7 +2,7 @@
 import { FormEvent, useState } from "react";
 import { BiCheck, BiX } from "react-icons/bi";
 import { useAppDispatch } from "@/lib/hooks";
-import { addTodo } from "@/features/todo/todosSlice";
+import { addTodo, deleteTodo } from "@/features/todo/todosSlice";
 
 const Todo = ({
   todo,
@@ -10,6 +10,7 @@ const Todo = ({
   todo: {
     content: string;
     completed: boolean;
+    id: string
   };
 }) => {
   const [content, setContent] = useState(todo.content);
@@ -24,8 +25,9 @@ const Todo = ({
     setCompleted(false);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (id: string) => {
     console.log("deleting");
+    dispatch(deleteTodo(id));
   };
 
   return (
@@ -72,7 +74,9 @@ const Todo = ({
           setContent(e.target.value);
         }}
       />
-      <button type={"button"} className="flex-none " onClick={handleDelete}>
+      <button type={"button"} className="flex-none " onClick={() => {
+        handleDelete(todo.id);
+      }}>
         <BiX className={"h-6 w-6 text-dmDarkGrayishBlue hover:dark:text-dmLightGrayishBlueHover"} />
       </button>
     </form>
