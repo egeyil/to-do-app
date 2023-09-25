@@ -1,11 +1,20 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: 'class',
   content: [
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'mobile-dark': "url('/public/images/bg-mobile-dark.jpg')",
+        'desktop-dark': "url('/public/images/bg-desktop-dark.jpg')",
+        'mobile-light': "url('/public/images/bg-mobile-light.jpg')",
+        'desktop-light': "url('/public/images/bg-desktop-light.jpg')",
+      },
       colors: {
         primaryBrightBlue: "hsl(220, 98%, 61%)",
         checkFrom: "hsl(192, 100%, 67%)",
@@ -25,7 +34,6 @@ module.exports = {
       }
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [],
 }
+export default config

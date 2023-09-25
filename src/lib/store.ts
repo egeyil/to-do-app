@@ -1,25 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-import todosReducer from '@/features/todo/todosSlice'
-import { setupListeners } from '@reduxjs/toolkit/query'
-import { apiSlice } from '@/features/api/apiSlice'
+import { create } from "zustand";
+import { onClient } from "@lib/utils";
 
-export const store = configureStore({
-  reducer: {
-    todos: todosReducer,
-    // Add the generated reducer as a specific top-level slice
-    [apiSlice.reducerPath]: apiSlice.reducer,
-  },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
-})
+interface DarkModeState {
+  darkMode: boolean;
+}
 
-// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
-// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
-setupListeners(store.dispatch)
-
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
+export const useAppStore = create<DarkModeState>((set) => ({
+  darkMode: onClient() ? window.matchMedia("(prefers-color-scheme: dark)").matches : false,
+  toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
+}));
