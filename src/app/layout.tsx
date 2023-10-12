@@ -5,10 +5,18 @@ import { ThemeProvider } from "@components/ThemeProvider";
 import * as React from "react";
 import { Header } from "@components/Header";
 
+import { Josefin_Sans } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Frontend Mentor | Todo app",
   description:
-    "A Frontend Mentor challenge, made with Next.js, TypeScript, Tailwind CSS, Zustand, Prisma, and MySQL.",
+    "A Frontend Mentor challenge, made with Next.js, TypeScript, Tailwind CSS, Zustand",
 };
 
 export default function RootLayout({
@@ -17,14 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={josefinSans.className}>
       <body
         className={
           "sm:dark:bg-desktop-dark transition-all sm:bg-desktop-light dark:bg-mobile-dark bg-mobile-light bg-no-repeat bg-contain overflow-y-hidden bg-lmVeryLightGray text-lmVeryLightGray dark:bg-dmVeryDarkBlue dark:text-dmLightGrayishBlue"
         }
       >
         <ThemeProvider>
-          <main className={"py-20 mx-auto w-5/12 h-screen overflow-y-hidden "}>
+          <main
+            className={
+              "py-20 mx-auto w-5/12 h-screen overflow-y-hidden flex flex-col"
+            }
+          >
             <Header />
             {children}
           </main>

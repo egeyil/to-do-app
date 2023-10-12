@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+"use client"
+import React, { SetStateAction } from "react";
 
-export function Checkbox() {
-  const [checked, setChecked] = useState<boolean>(false);
+interface CheckboxProps {
+  checked: boolean;
+  setChecked: React.Dispatch<SetStateAction<boolean>>;
+}
 
+export function Checkbox({ checked, setChecked }: CheckboxProps) {
   return (
     <button
       className={
-        "flex items-center justify-center h-4 w-4 rounded-full border border-dmVeryDarkGrayishBlue hover:border-dmVeryDarkGrayishBlueHover"
+        "flex items-center justify-center h-6 w-6 rounded-full border border-dmVeryDarkGrayishBlue hover:border-dmVeryDarkGrayishBlueHover"
       }
       onClick={() => setChecked(!checked)}
+      type={"button"}
     >
       {checked ? (
         <svg

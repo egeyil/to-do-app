@@ -1,10 +1,12 @@
-import Image from 'next/image'
+import Image from "next/image";
 import { CreateTodo } from "@components/CreateTodo";
+import { TodoList } from "@components/TodoList";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <CreateTodo />
-    </div>
-  )
+      <TodoList />
+    </>
+  );
 }
