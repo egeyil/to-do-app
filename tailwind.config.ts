@@ -10,10 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'mobile-dark': "url('/public/images/bg-mobile-dark.jpg')",
-        'desktop-dark': "url('/public/images/bg-desktop-dark.jpg')",
-        'mobile-light': "url('/public/images/bg-mobile-light.jpg')",
-        'desktop-light': "url('/public/images/bg-desktop-light.jpg')",
+        'mobile-dark': "url('../../public/images/bg-mobile-dark.jpg')",
+        'desktop-dark': "url('../../public/images/bg-desktop-dark.jpg')",
+        'mobile-light': "url('../../public/images/bg-mobile-light.jpg')",
+        'desktop-light': "url('../../public/images/bg-desktop-light.jpg')",
       },
       colors: {
         primaryBrightBlue: "hsl(220, 98%, 61%)",
