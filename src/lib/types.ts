@@ -3,3 +3,5 @@ export interface Todo {
   content: string;
   checked: boolean;
 }
+
+export type Tab = "all" | "active" | "completed";

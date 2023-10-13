@@ -34,7 +34,7 @@ export default function RootLayout({
         <ThemeProvider>
           <main
             className={
-              "py-20 mx-auto w-5/12 h-screen overflow-y-hidden flex flex-col"
+              "py-20 mx-auto w-4/12 h-screen overflow-y-hidden flex flex-col"
             }
           >
             <Header />

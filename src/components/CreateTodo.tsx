@@ -37,7 +37,7 @@ export function CreateTodo() {
     <form
       method="post"
       className={
-        "flex gap-5 items-center justify-between px-6 py-4 rounded dark:bg-dmVeryDarkDesaturatedBlue mb-9"
+        "flex gap-5 items-center justify-between px-6 py-4 dark:bg-dmVeryDarkDesaturatedBlue mb-9 rounded-md"
       }
       onSubmit={handleSubmit}
     >

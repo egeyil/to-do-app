@@ -1,11 +1,14 @@
 import { create } from "zustand";
-import { Todo } from "@lib/types";
+import type { Todo, Tab } from "@lib/types";
 
 interface AppState {
   todos: Todo[];
   addTodo: (todo: Todo) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (todo: Todo) => void;
+  tab: Tab;
+  setTab: (tab: Tab) => void;
+  clearCompleted: () => void;
 }
 
 export const useAppStore = create<AppState>()((set) => ({
@@ -19,4 +22,8 @@ export const useAppStore = create<AppState>()((set) => ({
         current.id === todo.id ? todo : current,
       ),
     })),
+  tab: "all",
+  setTab: (tab: Tab) => set(() => ({ tab })),
+  clearCompleted: () =>
+    set((state) => ({ todos: state.todos.filter((todo) => !todo.checked) })),
 }));
