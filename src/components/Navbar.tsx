@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppStore } from "@lib/store";
 import type { Tab } from "@lib/types";
+import { TabButton } from "@components/TabButton";
 
 export const Navbar = () => {
   const todos = useAppStore((state) => state.todos);
@@ -22,43 +23,10 @@ export const Navbar = () => {
       }
     >
       <h4>{incomplete} items left</h4>
-      <div className={"flex w-1/2 justify-center gap-5"}>
-        <button
-          className={`hover:text-primaryBrightBlue ${
-            tab === "all"
-              ? "text-primaryBrightBlue hover:text-primaryBrightBlue"
-              : ""
-          }`}
-          onClick={() => {
-            setTab("all");
-          }}
-        >
-          All
-        </button>
-        <button
-          className={`hover:text-dmLightGrayishBlueHover ${
-            tab === "active"
-              ? "text-primaryBrightBlue hover:text-primaryBrightBlue"
-              : ""
-          }`}
-          onClick={() => {
-            setTab("active");
-          }}
-        >
-          Active
-        </button>
-        <button
-          className={`hover:text-dmLightGrayishBlueHover ${
-            tab === "completed"
-              ? "text-primaryBrightBlue hover:text-primaryBrightBlue"
-              : ""
-          }`}
-          onClick={() => {
-            setTab("completed");
-          }}
-        >
-          Completed
-        </button>
+      <div className={"flex w-1/2 justify-center gap-1"}>
+        <TabButton tabName={"All"} />
+        <TabButton tabName={"Completed"} />
+        <TabButton tabName={"Completed"} />
       </div>
       <button
         className={showClear ? "visible" : "invisible"}

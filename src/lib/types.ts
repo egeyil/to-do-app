@@ -4,4 +4,4 @@ export interface Todo {
   checked: boolean;
 }
 
-export type Tab = "all" | "active" | "completed";
+export type Tab = "All" | "Active" | "Completed";
