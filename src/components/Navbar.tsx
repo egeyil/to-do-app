@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppStore } from "@lib/store";
 import type { Tab } from "@lib/types";
 import { TabButton } from "@components/TabButton";
+import { Tabs } from "@components/Tabs";
 
 export const Navbar = () => {
   const todos = useAppStore((state) => state.todos);
@@ -19,17 +20,17 @@ export const Navbar = () => {
   return (
     <nav
       className={
-        "flex justify-between items-center px-5 py-4 bg-dmVeryDarkDesaturatedBlue text-sm text-dmDarkGrayishBlue"
+        "flex justify-between items-center gap-4 px-5 py-4 bg-dmVeryDarkDesaturatedBlue text-sm text-dmDarkGrayishBlue"
       }
     >
       <h4>{incomplete} items left</h4>
-      <div className={"flex w-1/2 justify-center gap-1"}>
-        <TabButton tabName={"All"} />
-        <TabButton tabName={"Completed"} />
-        <TabButton tabName={"Completed"} />
+      <div className={"hidden sm:flex w-2/6 justify-between gap-4"}>
+        <Tabs />
       </div>
       <button
-        className={showClear ? "visible" : "invisible"}
+        className={`transition-opacity duration-300 ${
+          showClear ? "opacity-100" : "opacity-0"
+        }`}
         onClick={clearCompleted}
       >
         Clear Completed

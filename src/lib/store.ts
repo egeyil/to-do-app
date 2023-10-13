@@ -22,7 +22,7 @@ export const useAppStore = create<AppState>()((set) => ({
         current.id === todo.id ? todo : current,
       ),
     })),
-  tab: "all",
+  tab: "All",
   setTab: (tab: Tab) => set(() => ({ tab })),
   clearCompleted: () =>
     set((state) => ({ todos: state.todos.filter((todo) => !todo.checked) })),

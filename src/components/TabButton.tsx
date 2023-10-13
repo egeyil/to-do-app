@@ -1,3 +1,4 @@
+"use client";
 import { Tab } from "@lib/types";
 import { useAppStore } from "@lib/store";
 

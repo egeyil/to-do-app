@@ -10,9 +10,9 @@ export const TodoList = () => {
   const currentTab = useAppStore((state) => state.tab);
 
   const filteredTodos = todos.filter((todo) => {
-    if (currentTab === "all") return true;
-    if (currentTab === "active") return !todo.checked;
-    if (currentTab === "completed") return todo.checked;
+    if (currentTab === "All") return true;
+    if (currentTab === "Active") return !todo.checked;
+    if (currentTab === "Completed") return todo.checked;
   });
 
   return (

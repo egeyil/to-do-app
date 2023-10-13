@@ -16,13 +16,11 @@ export const ThemeSwitcher = () => {
           setTheme("light");
         }
       }}
-      className={"flex items-center justify-end rounded-full"}
+      className={"flex items-center w-7 h-7 sm:w-full sm:h-full justify-end rounded-full"}
     >
       <svg
-        className={"hidden dark:block"}
+        className={"block dark:hidden w-full h-full sm:w-[26px] sm:h-[26px]"}
         xmlns="http://www.w3.org/2000/svg"
-        width="26"
-        height="26"
       >
         <path
           fill="#FFF"
@@ -31,7 +29,7 @@ export const ThemeSwitcher = () => {
         />
       </svg>
       <svg
-        className={"block dark:hidden"}
+        className={"hidden dark:block w-full h-full sm:w-[26px] sm:h-[26px]"}
         xmlns="http://www.w3.org/2000/svg"
         width="26"
         height="26"
