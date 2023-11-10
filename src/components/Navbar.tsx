@@ -21,7 +21,7 @@ export const Navbar = () => {
         {/*DESKTOP*/}
         <section
           className={
-            "flex items-start justify-between gap-4 rounded-b-md bg-dmVeryDarkDesaturatedBlue px-5 py-0 pb-6 pt-3 text-xs text-dmDarkGrayishBlue sm:items-center sm:py-2 sm:text-sm"
+            "flex items-start justify-between gap-4 rounded-b-md bg-dmVeryDarkDesaturatedBlue px-5 py-0 pb-6 pt-3 text-xs text-dmDarkGrayishBlue sm:items-center sm:py-3"
           }
         >
           <LeftItemsCounter leftItems={incompleteTodos.length} />

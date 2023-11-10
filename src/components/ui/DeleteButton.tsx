@@ -9,7 +9,7 @@ export const DeleteButton = ({ id, deleteTodo }: DeleteButtonProps) => {
   return (
     <Button
       className={
-        "flex h-6 w-6 items-center justify-center p-0.5 text-dmDarkGrayishBlue visible sm:group-hover:visible sm:invisible"
+        "flex h-6 w-6 items-center justify-center p-0.5 text-dmDarkGrayishBlue opacity-100 focus:opacity-50 sm:opacity-0 sm:group-hover:opacity-100"
       }
       onClick={() => deleteTodo(id)}
       type={"button"}

@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={josefinSans.className}>
       <body
         className={
           "text-lmMainText dark:text-dmMainText overflow-y-hidden bg-lmVeryLightGray bg-mobile-light bg-contain bg-no-repeat transition-all dark:bg-dmVeryDarkBlue dark:bg-mobile-dark sm:bg-desktop-light sm:dark:bg-desktop-dark"

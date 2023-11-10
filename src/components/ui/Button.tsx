@@ -1,8 +1,8 @@
 import React from "react";
 
 interface ButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
+  children?: React.ReactNode;
+  onClick?: () => void;
   disabled?: boolean;
   className?: string;
   type?: "button" | "submit" | "reset";
@@ -17,11 +17,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`transition-all duration-300 ${
-        disabled === true
-          ? "dark:text-lmInactive hover:cursor-default"
-          : "hover:cursor-pointer hover:text-primaryBrightBlue"
-      } ${className}`}
+      className={`disabled:dark:text-lmInactive transition-all duration-300 hover:cursor-pointer hover:text-primaryBrightBlue disabled:hover:cursor-default ${className}`}
       onClick={onClick}
       disabled={disabled}
       type={type}

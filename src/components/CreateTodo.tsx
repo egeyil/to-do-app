@@ -51,7 +51,7 @@ export function CreateTodo() {
         placeholder={"Create a new todo..."}
         name={"Input for creating a new todo"}
       />
-      <CreateButton />
+      <CreateButton disabled={input.length === 0}/>
     </form>
   );
 }
