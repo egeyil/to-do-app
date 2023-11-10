@@ -1,10 +1,9 @@
-"use client";
-import React from "react";
-import { useAppStore } from "@lib/store";
+interface DeleteButtonProps {
+  id: string;
+  deleteTodo: (id: string) => void;
+}
 
-export const DeleteButton = ({ id }: { id: string }) => {
-  const deleteTodo = useAppStore((state) => state.deleteTodo);
-
+export const DeleteButton = ({ id, deleteTodo }: DeleteButtonProps) => {
   return (
     <button
       className={

@@ -1,10 +1,12 @@
-"use client";
 import { Tab } from "@lib/types";
-import { useAppStore } from "@lib/store";
 
-export const TabButton = ({ tabName }: { tabName: Tab }) => {
-  const { tab: currentTab, setTab } = useAppStore();
+interface TabButtonProps {
+  tabName: Tab;
+  currentTab: Tab;
+  setTab: (tab: Tab) => void;
+}
 
+export const TabButton = ({ tabName, currentTab, setTab }: TabButtonProps) => {
   return (
     <button
       className={`hover:text-primaryBrightBlue ${

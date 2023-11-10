@@ -7,7 +7,7 @@ import { Header } from "@components/Header";
 
 import { Josefin_Sans } from "next/font/google";
 import { Tabs } from "@components/Tabs";
-import { MobileTabs } from "@components/MobileTabs";
+import { Navbar } from "@components/Navbar";
 
 // If loading a variable font, you don't need to specify the font weight
 const josefinSans = Josefin_Sans({
@@ -16,7 +16,7 @@ const josefinSans = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Frontend Mentor | Todo app",
+  title: "Todo app",
   description:
     "A Frontend Mentor challenge, made with Next.js, TypeScript, Tailwind CSS, Zustand",
 };
@@ -34,15 +34,15 @@ export default function RootLayout({
       }
     >
     <ThemeProvider>
-    <main
-      className={
-        "py-10 sm:py-20 px-10 sm:px-0 mx-auto w-full sm:w-4/5 md:w-3/5 xl:w-5/12 h-screen overflow-y-hidden flex flex-col"
-      }
-    >
-      <Header/>
-      {children}
-      <MobileTabs/>
-    </main>
+      <main
+        className={
+          "py-10 sm:py-20 px-10 sm:px-0 mx-auto w-full sm:w-4/5 md:w-3/5 xl:w-5/12 h-screen overflow-y-hidden flex flex-col"
+        }
+      >
+        <Header/>
+        {children}
+        <Navbar/>
+      </main>
     </ThemeProvider>
     </body>
     </html>

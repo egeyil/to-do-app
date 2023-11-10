@@ -1,11 +1,11 @@
 "use client";
 
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { Checkbox } from "@components/Checkbox";
+import { Checkbox } from "@components/ui/Checkbox";
 import { FormEvent, useState, useRef, useEffect } from "react";
 import { useAppStore } from "@lib/store";
-import { TodoInput } from "@components/TodoInput";
-import { CreateButton } from "@components/CreateButton";
+import { TodoInput } from "@components/ui/TodoInput";
+import { CreateButton } from "@components/ui/CreateButton";
 
 export function CreateTodo() {
   // TODO Save input value to local storage to recover data when page is refreshed.

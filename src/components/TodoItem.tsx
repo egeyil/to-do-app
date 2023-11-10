@@ -1,11 +1,11 @@
 "use client";
 import type { Todo as TodoType } from "@lib/types";
-import { Checkbox } from "@components/Checkbox";
-import { DeleteButton } from "@components/DeleteButton";
+import { Checkbox } from "@components/ui/Checkbox";
+import { DeleteButton } from "@components/ui/DeleteButton";
 import { FormEvent, useEffect, useState } from "react";
 import constants from "@lib/constants";
 import { useAppStore } from "@lib/store";
-import { TodoInput } from "@components/TodoInput";
+import { TodoInput } from "@components/ui/TodoInput";
 
 export const TodoItem = ({ todo }: { todo: TodoType }) => {
   // TODO Save input value to local storage
@@ -39,9 +39,9 @@ export const TodoItem = ({ todo }: { todo: TodoType }) => {
         }
       }}
     >
-      <Checkbox checked={checked} setChecked={setChecked} />
-      <TodoInput input={input} setInput={setInput} />
-      <DeleteButton id={todo.id} />
+      <Checkbox checked={checked} setChecked={setChecked}/>
+      <TodoInput input={input} setInput={setInput}/>
+      <DeleteButton id={todo.id} deleteTodo={deleteTodo}/>
     </form>
   );
 };
