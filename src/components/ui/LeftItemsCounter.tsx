@@ -1,5 +1,5 @@
 export function LeftItemsCounter({ leftItems }: { leftItems: number }) {
   return (
-    <h4>{leftItems} items left</h4>
+    <h4 className={"hover:cursor-default"}>{leftItems} items left</h4>
   );
 }

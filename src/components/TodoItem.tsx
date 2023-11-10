@@ -33,7 +33,6 @@ export const TodoItem = ({ todo }: { todo: TodoType }) => {
       }
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("triggered");
         if (input !== "") {
           handleSubmit(e);
         }

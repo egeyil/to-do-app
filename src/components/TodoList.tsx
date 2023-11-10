@@ -8,8 +8,9 @@ export const TodoList = () => {
 
   const filteredTodos = todos.filter((todo) => {
     if (currentTab === "All") return true;
-    if (currentTab === "Active") return !todo.checked;
-    if (currentTab === "Completed") return todo.checked;
+    else if (currentTab === "Active") return !todo.checked;
+    else if (currentTab === "Completed") return todo.checked;
+    else return false;
   });
 
   return (
