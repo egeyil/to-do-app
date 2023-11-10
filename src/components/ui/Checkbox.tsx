@@ -1,4 +1,5 @@
-import React, { SetStateAction } from "react"
+import React, { SetStateAction } from "react";
+import { Button } from "@components/ui/Button";
 
 interface CheckboxProps {
   checked: boolean;
@@ -7,9 +8,9 @@ interface CheckboxProps {
 
 export function Checkbox({ checked, setChecked }: CheckboxProps) {
   return (
-    <button
+    <Button
       className={
-        "flex items-center justify-center h-6 w-6 rounded-full border border-dmVeryDarkGrayishBlue hover:border-dmVeryDarkGrayishBlueHover"
+        "dark:border-dmSecondaryText dark:hover:border-dmSecondaryHover flex h-5 w-5 items-center justify-center rounded-full border px-0 py-0 sm:h-6 sm:w-6"
       }
       onClick={() => setChecked(!checked)}
       type={"button"}
@@ -29,6 +30,6 @@ export function Checkbox({ checked, setChecked }: CheckboxProps) {
           />
         </svg>
       ) : null}
-    </button>
+    </Button>
   );
 }

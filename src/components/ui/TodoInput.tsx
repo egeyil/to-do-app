@@ -16,10 +16,11 @@ export const TodoInput = forwardRef<HTMLInputElement, TodoInputProps>(
   ) {
     return (
       <input
+        autoComplete={"off"}
         ref={ref}
         placeholder={placeholder}
         className={
-          "w-full pr-3 hover:cursor-pointer dark:bg-dmVeryDarkDesaturatedBlue focus:outline-0 caret-primaryBrightBlue placeholder:text-dmDarkGrayishBlue"
+          "w-full pr-3 caret-primaryBrightBlue placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue"
         }
         name={name}
         type="text"

@@ -37,11 +37,13 @@ export function CreateTodo() {
     <form
       method="post"
       className={
-        "flex gap-5 items-center justify-between px-6 py-4 dark:bg-dmVeryDarkDesaturatedBlue mb-9 rounded-md"
+        "mb-9 flex items-center justify-between gap-3 rounded-md px-4 py-3 dark:bg-dmVeryDarkDesaturatedBlue sm:gap-5 sm:px-6 sm:py-4"
       }
       onSubmit={handleSubmit}
     >
-      <Checkbox checked={checked} setChecked={setChecked} />
+      <div className={"p-0.5"}>
+        <Checkbox checked={checked} setChecked={setChecked} />
+      </div>
       <TodoInput
         ref={inputRef}
         input={input}

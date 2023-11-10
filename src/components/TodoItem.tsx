@@ -1,13 +1,16 @@
 "use client";
-import type { Todo as TodoType } from "@lib/types";
+import type { Todo } from "@lib/types";
 import { Checkbox } from "@components/ui/Checkbox";
 import { DeleteButton } from "@components/ui/DeleteButton";
-import { FormEvent, useEffect, useState } from "react";
-import constants from "@lib/constants";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useAppStore } from "@lib/store";
 import { TodoInput } from "@components/ui/TodoInput";
 
-export const TodoItem = ({ todo }: { todo: TodoType }) => {
+interface TodoItemProps {
+  todo: Todo;
+}
+
+export const TodoItem = ({ todo }: TodoItemProps) => {
   // TODO Save input value to local storage
   // const [input, setInput] = useLocalStorage("CreateTodoInput", "");
 
@@ -29,7 +32,7 @@ export const TodoItem = ({ todo }: { todo: TodoType }) => {
     <form
       method="post"
       className={
-        "group flex items-center justify-between gap-5 px-6 py-4 dark:bg-dmVeryDarkDesaturatedBlue"
+        "group flex items-center justify-between gap-3 px-4 py-3 text-sm dark:bg-dmVeryDarkDesaturatedBlue sm:gap-5 sm:px-6 sm:py-4 sm:text-base"
       }
       onSubmit={(e) => {
         e.preventDefault();
@@ -38,7 +41,9 @@ export const TodoItem = ({ todo }: { todo: TodoType }) => {
         }
       }}
     >
-      <Checkbox checked={checked} setChecked={setChecked} />
+      <div className={"p-0.5"}>
+        <Checkbox checked={checked} setChecked={setChecked} />
+      </div>
       <TodoInput input={input} setInput={setInput} />
       <DeleteButton id={todo.id} deleteTodo={deleteTodo} />
     </form>

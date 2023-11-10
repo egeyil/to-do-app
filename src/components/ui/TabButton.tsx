@@ -1,22 +1,32 @@
 import { Tab } from "@lib/types";
+import { Button } from "@components/ui/Button";
+import React from "react";
 
 interface TabButtonProps {
   tabName: Tab;
   currentTab: Tab;
   setTab: (tab: Tab) => void;
-  disabled?: boolean;
 }
 
-export const TabButton = ({ tabName, currentTab, setTab, disabled = false }: TabButtonProps) => {
+export const TabButton = ({
+  tabName,
+  currentTab,
+  setTab,
+  disabled = false,
+}: TabButtonProps & Partial<React.ComponentProps<typeof Button>>) => {
   return (
-    <button
+    <Button
       disabled={disabled}
-      className={`px-3 py-2 ${currentTab === tabName ? "text-primaryBrightBlue hover:text-primaryBrightBlue" : ""} ${disabled === false ? "hover:text-primaryBrightBlue" : "hover:cursor-default"}`}
+      className={`${
+        currentTab === tabName
+          ? "text-primaryBrightBlue hover:text-primaryBrightBlue"
+          : ""
+      }`}
       onClick={() => {
         setTab(tabName);
       }}
     >
       {tabName}
-    </button>
+    </Button>
   );
 };

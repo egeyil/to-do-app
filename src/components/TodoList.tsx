@@ -19,7 +19,7 @@ export const TodoList = () => {
         {filteredTodos.map((todo) => (
           <li key={todo.id}>
             <TodoItem todo={todo} />
-            <hr className={"border-dmVeryDarkGrayishBlue"} />
+            <hr className={"border-dmSecondaryText"} />
           </li>
         ))}
       </ul>

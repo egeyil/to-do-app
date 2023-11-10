@@ -22,29 +22,29 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: {
+  children,
+}: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-    <body
-      className={
-        "sm:dark:bg-desktop-dark transition-all sm:bg-desktop-light dark:bg-mobile-dark bg-mobile-light bg-no-repeat bg-contain overflow-y-hidden bg-lmVeryLightGray text-lmVeryLightGray dark:bg-dmVeryDarkBlue dark:text-dmLightGrayishBlue"
-      }
-    >
-    <ThemeProvider>
-      <main
+      <body
         className={
-          "py-10 sm:py-20 px-10 sm:px-0 mx-auto w-full sm:w-4/5 md:w-3/5 xl:w-5/12 h-screen overflow-y-hidden flex flex-col"
+          "text-lmMainText dark:text-dmMainText overflow-y-hidden bg-lmVeryLightGray bg-mobile-light bg-contain bg-no-repeat transition-all dark:bg-dmVeryDarkBlue dark:bg-mobile-dark sm:bg-desktop-light sm:dark:bg-desktop-dark"
         }
       >
-        <Header/>
-        {children}
-        <Navbar/>
-      </main>
-    </ThemeProvider>
-    </body>
+        <ThemeProvider>
+          <main
+            className={
+              "mx-auto flex h-screen w-full flex-col overflow-y-hidden px-10 py-10 sm:w-10/12 sm:px-0 sm:py-20 md:w-6/12 xl:w-4/12"
+            }
+          >
+            <Header />
+            {children}
+            <Navbar />
+          </main>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

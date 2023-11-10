@@ -5,6 +5,7 @@ interface ButtonProps {
   onClick: () => void;
   disabled?: boolean;
   className?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 export function Button({
@@ -12,16 +13,18 @@ export function Button({
   onClick,
   disabled = false,
   className,
+  type = "button",
 }: ButtonProps) {
   return (
     <button
-      className={`px-3 py-2 transition-opacity duration-300 ${
+      className={`transition-all duration-300 ${
         disabled === true
-          ? "hover:cursor-default"
+          ? "dark:text-lmInactive hover:cursor-default"
           : "hover:cursor-pointer hover:text-primaryBrightBlue"
       } ${className}`}
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {children}
     </button>
