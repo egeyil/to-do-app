@@ -1,9 +1,9 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 // These hooks are used to get and set values in the local and session storage
 const getLocalValue = (key: string, initValue: any) => {
   // In case of Server-side (Next.js)
-  if (typeof window === 'undefined') return initValue;
+  if (typeof window === "undefined") return initValue;
 
   // if a value is already store
   const val = localStorage.getItem(key);
@@ -13,11 +13,11 @@ const getLocalValue = (key: string, initValue: any) => {
   if (initValue instanceof Function) return initValue();
 
   return initValue;
-}
+};
 
 const getSessionValue = (key: string, initValue: any) => {
   // In case of SSR (Next.js)
-  if (typeof window === 'undefined') return initValue;
+  if (typeof window === "undefined") return initValue;
 
   // if a value is already store
 
@@ -28,7 +28,7 @@ const getSessionValue = (key: string, initValue: any) => {
   if (initValue instanceof Function) return initValue();
 
   return initValue;
-}
+};
 
 export const useLocalStorage = (key: string, initValue: any) => {
   const [value, setValue] = useState(() => {
@@ -37,10 +37,10 @@ export const useLocalStorage = (key: string, initValue: any) => {
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value])
+  }, [key, value]);
 
   return [value, setValue];
-}
+};
 
 export const useSessionStorage = (key: string, initValue: any) => {
   const [value, setValue] = useState(() => {
@@ -49,7 +49,7 @@ export const useSessionStorage = (key: string, initValue: any) => {
 
   useEffect(() => {
     sessionStorage.setItem(key, JSON.stringify(value));
-  }, [key, value])
+  }, [key, value]);
 
   return [value, setValue];
 };

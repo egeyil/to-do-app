@@ -7,10 +7,19 @@ interface ButtonProps {
   className?: string;
 }
 
-export function Button({ children, onClick, disabled = false, className }: ButtonProps) {
+export function Button({
+  children,
+  onClick,
+  disabled = false,
+  className,
+}: ButtonProps) {
   return (
     <button
-      className={`transition-opacity duration-300 px-3 py-2 ${disabled === true ? "hover:cursor-default" : "hover:cursor-pointer hover:text-primaryBrightBlue"} ${className}`}
+      className={`px-3 py-2 transition-opacity duration-300 ${
+        disabled === true
+          ? "hover:cursor-default"
+          : "hover:cursor-pointer hover:text-primaryBrightBlue"
+      } ${className}`}
       onClick={onClick}
       disabled={disabled}
     >

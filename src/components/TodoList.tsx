@@ -14,12 +14,12 @@ export const TodoList = () => {
   });
 
   return (
-    <section className={"rounded-md flex flex-col rounded overflow-y-hidden"}>
+    <section className={"flex flex-col overflow-y-hidden rounded-t-md"}>
       <ul className={"h-full overflow-y-auto"}>
         {filteredTodos.map((todo) => (
           <li key={todo.id}>
-            <TodoItem todo={todo}/>
-            <hr className={"border-dmVeryDarkGrayishBlue"}/>
+            <TodoItem todo={todo} />
+            <hr className={"border-dmVeryDarkGrayishBlue"} />
           </li>
         ))}
       </ul>

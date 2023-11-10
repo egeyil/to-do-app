@@ -29,7 +29,7 @@ export const TodoItem = ({ todo }: { todo: TodoType }) => {
     <form
       method="post"
       className={
-        "flex gap-5 items-center justify-between px-6 py-4 dark:bg-dmVeryDarkDesaturatedBlue group"
+        "group flex items-center justify-between gap-5 px-6 py-4 dark:bg-dmVeryDarkDesaturatedBlue"
       }
       onSubmit={(e) => {
         e.preventDefault();
@@ -38,9 +38,9 @@ export const TodoItem = ({ todo }: { todo: TodoType }) => {
         }
       }}
     >
-      <Checkbox checked={checked} setChecked={setChecked}/>
-      <TodoInput input={input} setInput={setInput}/>
-      <DeleteButton id={todo.id} deleteTodo={deleteTodo}/>
+      <Checkbox checked={checked} setChecked={setChecked} />
+      <TodoInput input={input} setInput={setInput} />
+      <DeleteButton id={todo.id} deleteTodo={deleteTodo} />
     </form>
   );
 };

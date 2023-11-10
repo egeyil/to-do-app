@@ -14,7 +14,7 @@ interface AppState {
 export const useAppStore = create<AppState>()((set) => ({
   todos: [],
   completedTodos: (state: AppState) => {
-    return state.todos.filter((todo) => todo.checked)
+    return state.todos.filter((todo) => todo.checked);
   },
   addTodo: (todo: Todo) => set((state) => ({ todos: [...state.todos, todo] })),
   deleteTodo: (id: string) =>
@@ -32,5 +32,7 @@ export const useAppStore = create<AppState>()((set) => ({
 }));
 
 export const useTodos = () => useAppStore((state) => state.todos);
-export const useCompletedTodos = () => useAppStore((state) => state.todos.filter((todo) => todo.checked));
-export const useIncompleteTodos = () => useAppStore((state) => state.todos.filter((todo) => !todo.checked));
+export const useCompletedTodos = () =>
+  useAppStore((state) => state.todos.filter((todo) => todo.checked));
+export const useIncompleteTodos = () =>
+  useAppStore((state) => state.todos.filter((todo) => !todo.checked));

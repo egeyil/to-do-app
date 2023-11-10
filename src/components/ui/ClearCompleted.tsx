@@ -7,12 +7,16 @@ interface ClearCompletedProps {
 }
 
 export function ClearCompleted({
-                                 clearCompleted,
-                                 showBtn,
-                                 disabled,
-                               }: ClearCompletedProps & Partial<React.ComponentProps<typeof Button>>) {
+  clearCompleted,
+  showBtn,
+  disabled,
+}: ClearCompletedProps & Partial<React.ComponentProps<typeof Button>>) {
   return (
-    <Button onClick={clearCompleted} disabled={disabled} className={`${showBtn ? "opacity-100" : "opacity-0"}`}>
+    <Button
+      onClick={clearCompleted}
+      disabled={disabled}
+      className={`${showBtn ? "opacity-100" : "opacity-0"}`}
+    >
       Clear Completed
     </Button>
   );
