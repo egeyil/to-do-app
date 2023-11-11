@@ -1,6 +1,5 @@
 "use client";
 
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Checkbox } from "@components/ui/Checkbox";
 import { FormEvent, useState, useRef, useEffect } from "react";
 import { useAppStore } from "@lib/store";
@@ -8,9 +7,6 @@ import { TodoInput } from "@components/ui/TodoInput";
 import { CreateButton } from "@components/ui/CreateButton";
 
 export function CreateTodo() {
-  // TODO Save input value to local storage to recover data when page is refreshed.
-  // const [input, setInput] = useLocalStorage("CreateTodoInput", "");
-
   const addTodo = useAppStore((state) => state.addTodo);
 
   const [input, setInput] = useState("");
@@ -51,7 +47,7 @@ export function CreateTodo() {
         placeholder={"Create a new todo..."}
         name={"Input for creating a new todo"}
       />
-      <CreateButton disabled={input.length === 0}/>
+      <CreateButton disabled={input.length === 0} />
     </form>
   );
 }
