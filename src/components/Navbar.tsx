@@ -20,7 +20,7 @@ export const Navbar = () => {
       {/*DESKTOP*/}
       <section
         className={
-          "flex items-start justify-between gap-4 rounded-b-md bg-dmVeryDarkDesaturatedBlue px-5 py-0 pb-6 pt-3 text-xs text-dmDarkGrayishBlue sm:items-center sm:py-3"
+          "flex items-start justify-between gap-4 rounded-b-md bg-white px-5 py-0 pb-6 pt-3 text-xs text-dmDarkGrayishBlue drop-shadow dark:bg-dmVeryDarkDesaturatedBlue dark:drop-shadow-none sm:items-center sm:py-3"
         }
       >
         <LeftItemsCounter leftItems={activeTodos?.length} />
@@ -37,7 +37,7 @@ export const Navbar = () => {
       {/*MOBILE*/}
       <nav
         className={
-          "mt-8 flex w-full justify-center gap-9 rounded-md bg-dmVeryDarkDesaturatedBlue px-5 py-3.5 text-sm sm:hidden"
+          "mt-8 flex w-full justify-center gap-9 rounded-md bg-white px-5 py-3.5 text-sm drop-shadow dark:bg-dmVeryDarkDesaturatedBlue dark:shadow-none dark:drop-shadow-none sm:hidden sm:shadow-none"
         }
       >
         <Tabs />

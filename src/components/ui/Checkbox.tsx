@@ -12,7 +12,7 @@ export function Checkbox({ checked, setChecked, handleUpdate }: CheckboxProps) {
   return (
     <Button
       className={
-        "flex h-5 w-5 items-center justify-center rounded-full border px-0 py-0 dark:border-dmSecondaryText dark:hover:border-dmSecondaryHover sm:h-6 sm:w-6"
+        "flex h-5 w-5 items-center justify-center rounded-full border border-dmDarkGrayishBlue hover:border-dmSecondaryHover px-0 py-0 dark:border-dmSecondaryText dark:hover:border-dmSecondaryHover sm:h-6 sm:w-6"
       }
       onClick={async () => {
         if (handleUpdate) {
@@ -24,14 +24,13 @@ export function Checkbox({ checked, setChecked, handleUpdate }: CheckboxProps) {
     >
       {checked ? (
         <svg
-          className={"text-white"}
+          className={"stroke-lmInactive dark:stroke-white"}
           xmlns="http://www.w3.org/2000/svg"
           width="11"
           height="9"
         >
           <path
             fill="none"
-            stroke="#FFF"
             strokeWidth="2"
             d="M1 4.304L3.696 7l6-6"
           />

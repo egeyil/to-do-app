@@ -6,20 +6,20 @@ import { useEffect } from "react";
 import * as React from "react";
 import { Navbar } from "@components/Navbar";
 
-interface TodoListProps {
-  todos: Todo[];
-}
+// interface TodoListProps {
+//   todos: Todo[];
+// }
 
-export const TodoList = ({ todos }: TodoListProps) => {
-  const [currentTab, setTodos, stateTodos] = useAppStore((state) => [
-    state.tab,
-    state.setTodos,
-    state.todos,
-  ]);
-
+export const TodoList = () => {
+  // hydrate persisted store after on mount
   useEffect(() => {
-    setTodos(todos);
+    useAppStore.persist.rehydrate();
   }, []);
+  const [currentTab, todos] = useAppStore((state) => [state.tab, state.todos]);
+
+  // useEffect(() => {
+  //   setTodos(todos);
+  // }, []);
 
   const filterTodos = (tab: Tab, todos: Todo[]) => {
     return todos.filter((todo) => {
@@ -30,19 +30,25 @@ export const TodoList = ({ todos }: TodoListProps) => {
     });
   };
 
-  const filteredTodos =
-    stateTodos?.length > 0
-      ? filterTodos(currentTab, stateTodos)
-      : filterTodos("All", todos);
+  // const filteredTodos =
+  //   stateTodos?.length > 0
+  //     ? filterTodos(currentTab, stateTodos)
+  //     : filterTodos("All", todos);
+
+  const filteredTodos = filterTodos(currentTab, todos);
 
   return (
     <>
-      <section className={"flex flex-col overflow-y-hidden rounded-t-md"}>
+      <section
+        className={
+          "flex flex-col overflow-y-hidden rounded-t-md bg-none drop-shadow-md dark:drop-shadow-none"
+        }
+      >
         <ul className={"h-full overflow-y-auto"}>
           {filteredTodos?.map((todo) => (
             <li key={todo.id}>
               <TodoItem todo={todo} />
-              <hr className={"border-dmSecondaryText"} />
+              <hr className={"dark:border-dmSecondaryHover"} />
             </li>
           ))}
         </ul>

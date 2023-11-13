@@ -28,13 +28,13 @@ export default function RootLayout({
     <html lang="en" className={josefinSans.className}>
       <body
         className={
-          "bg-lmVeryLightGray overflow-y-hidden bg-mobile-light bg-contain bg-no-repeat text-lmMainText transition-all dark:bg-dmVeryDarkBlue dark:bg-mobile-dark dark:text-dmMainText sm:bg-desktop-light sm:dark:bg-desktop-dark"
+          "bg-lmVeryLightGray overflow-y-hidden bg-mobile-light bg-contain bg-no-repeat text-lmInactive transition-all dark:bg-dmVeryDarkBlue dark:bg-mobile-dark dark:text-dmMainText dark:text-lmMainText sm:bg-desktop-light sm:dark:bg-desktop-dark"
         }
       >
         <ThemeProvider>
           <main
             className={
-              "mx-auto flex h-screen w-full flex-col overflow-y-hidden px-10 py-10 sm:w-10/12 sm:px-0 sm:py-20 md:w-6/12 xl:w-4/12"
+              "mx-auto flex h-screen w-full flex-col px-5 py-10 sm:w-10/12 sm:px-0 sm:py-20 md:w-6/12 xl:w-4/12"
             }
           >
             <Header />

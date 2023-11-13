@@ -21,8 +21,10 @@ export const TodoInput = forwardRef<HTMLInputElement, TodoInputProps>(
         ref={ref}
         placeholder={placeholder}
         className={
-          "w-full pr-3 caret-primaryBrightBlue transition-all duration-300 placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue dark:hover:text-dmMainTextHover" +
-          (checked ? " text-dmSecondaryText line-through" : "")
+          "w-full pr-3 caret-primaryBrightBlue placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue dark:hover:text-dmMainTextHover" +
+          (checked
+            ? " text-lmLightGrayishBlue line-through dark:text-dmSecondaryText"
+            : "")
         }
         name={name}
         type="text"

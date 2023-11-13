@@ -11,6 +11,9 @@ const config: Config = {
         "mobile-light": "url('../../public/images/bg-mobile-light.jpg')",
         "desktop-light": "url('../../public/images/bg-desktop-light.jpg')",
       },
+      boxShadow: {
+        custom: "0px 35px 50px -15px rgba(194, 195, 214, 0.50)",
+      },
       colors: {
         primaryBrightBlue: "hsl(220, 98%, 61%)",
         checkFrom: "hsl(192, 100%, 67%)",
@@ -26,7 +29,7 @@ const config: Config = {
         dmMainTextHover: "hsl(236, 33%, 92%)",
         dmDarkGrayishBlue: "hsl(234, 11%, 52%)",
         dmSecondaryText: "hsl(235, 16%, 43%)",
-        dmSecondaryHover: "hsl(237, 14%, 26%)",
+        dmSecondaryHover: "hsl(235, 14%, 26%)",
       },
     },
   },
