@@ -4,19 +4,25 @@ import { LeftItemsCounter } from "@components/ui/LeftItemsCounter";
 import { ClearCompleted } from "@components/ui/ClearCompleted";
 import { Tabs } from "@components/Tabs";
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Navbar = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const [todos, clearCompleted] = useAppStore((state) => [
     state.todos,
     state.clearCompleted,
   ]);
 
-  const completedTodos = todos.filter((todo) => todo.checked);
-  const incompleteTodos = todos.filter((todo) => !todo.checked);
+  const completedTodos = todos?.filter((todo) => todo.checked);
+  const incompleteTodos = todos?.filter((todo) => !todo.checked);
 
-  if (todos.length === 0) return null;
-  else {
+  if (!isClient) return null;
+  else
     return (
       <>
         {/*DESKTOP*/}
@@ -46,5 +52,4 @@ export const Navbar = () => {
         </nav>
       </>
     );
-  }
 };
