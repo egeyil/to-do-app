@@ -38,10 +38,11 @@ export const useAppStore = create<AppState>()(
     },
     tab: "All",
     setTab: (tab: Tab) => set(() => ({ tab })),
-    clearCompleted: () =>
+    clearCompleted: () => {
       set((state) => ({
         todos: state.todos.filter((todo) => !todo.checked),
-      })),
+      }));
+    },
   })),
 );
 

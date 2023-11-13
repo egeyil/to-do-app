@@ -1,33 +1,18 @@
 {
   "todos": [
     {
-      "id": "uhbwf",
-      "content": "1",
+      "id": "0gjxxh",
+      "content": "Buy milk",
       "checked": false
     },
     {
-      "id": "warl9",
-      "content": "2",
+      "id": "urumq",
+      "content": "Buy meat",
       "checked": false
     },
     {
-      "id": "vo7g9",
-      "content": "3",
-      "checked": false
-    },
-    {
-      "id": "wau9w",
-      "content": "4",
-      "checked": false
-    },
-    {
-      "id": "tme3a",
-      "content": "Hello",
-      "checked": false
-    },
-    {
-      "id": "dtqlp",
-      "content": "123",
+      "id": "moh5i",
+      "content": "Sleep",
       "checked": false
     }
   ]

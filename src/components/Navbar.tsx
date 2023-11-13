@@ -12,8 +12,9 @@ export const Navbar = () => {
   ]);
 
   const completedTodos = todos?.filter((todo) => todo.checked);
-  const incompleteTodos = todos?.filter((todo) => !todo.checked);
+  const activeTodos = todos?.filter((todo) => !todo.checked);
 
+  if (activeTodos.length === 0 && completedTodos.length === 0) return null;
   return (
     <>
       {/*DESKTOP*/}
@@ -22,7 +23,7 @@ export const Navbar = () => {
           "flex items-start justify-between gap-4 rounded-b-md bg-dmVeryDarkDesaturatedBlue px-5 py-0 pb-6 pt-3 text-xs text-dmDarkGrayishBlue sm:items-center sm:py-3"
         }
       >
-        <LeftItemsCounter leftItems={incompleteTodos?.length} />
+        <LeftItemsCounter leftItems={activeTodos?.length} />
         <nav className={"hidden w-2/6 justify-between gap-4 sm:flex"}>
           <Tabs />
         </nav>

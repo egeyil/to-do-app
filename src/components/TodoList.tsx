@@ -1,7 +1,7 @@
 "use client";
 import { useAppStore } from "@lib/store";
 import { TodoItem } from "@components/TodoItem";
-import { Todo } from "@lib/types";
+import { Tab, Todo } from "@lib/types";
 import { useEffect } from "react";
 import * as React from "react";
 import { Navbar } from "@components/Navbar";
@@ -21,12 +21,19 @@ export const TodoList = ({ todos }: TodoListProps) => {
     setTodos(todos);
   }, []);
 
-  const filteredTodos = todos?.filter((todo) => {
-    if (currentTab === "All") return true;
-    else if (currentTab === "Active") return !todo.checked;
-    else if (currentTab === "Completed") return todo.checked;
-    else return false;
-  });
+  const filterTodos = (tab: Tab, todos: Todo[]) => {
+    return todos.filter((todo) => {
+      if (tab === "All") return true;
+      else if (tab === "Active") return !todo.checked;
+      else if (tab === "Completed") return todo.checked;
+      else return false;
+    });
+  };
+
+  const filteredTodos =
+    stateTodos?.length > 0
+      ? filterTodos(currentTab, stateTodos)
+      : filterTodos("All", todos);
 
   return (
     <>

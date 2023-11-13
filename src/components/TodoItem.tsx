@@ -38,8 +38,8 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         <Checkbox
           checked={checked}
           setChecked={setChecked}
-          handleUpdate={async () =>
-            await updateTodo({
+          handleUpdate={() =>
+            updateTodo({
               id: todo.id,
               content: input,
               checked: !checked,
@@ -48,7 +48,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         />
       </div>
       <TodoInput input={input} setInput={setInput} checked={checked} />
-      <DeleteButton handleDelete={async () => await deleteTodo(todo.id)} />
+      <DeleteButton handleDelete={() => deleteTodo(todo.id)} />
     </form>
   );
 };
