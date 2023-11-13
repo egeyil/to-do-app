@@ -2,7 +2,7 @@ import { Button } from "@components/ui/Button";
 
 interface DeleteButtonProps {
   id: string;
-  deleteTodo: (id: string) => void;
+  deleteTodo: (id: string) => Promise<void>;
 }
 
 export const DeleteButton = ({ id, deleteTodo }: DeleteButtonProps) => {
@@ -11,7 +11,9 @@ export const DeleteButton = ({ id, deleteTodo }: DeleteButtonProps) => {
       className={
         "flex h-6 w-6 items-center justify-center p-0.5 text-dmDarkGrayishBlue opacity-100 focus:opacity-50 sm:opacity-0 sm:group-hover:opacity-100"
       }
-      onClick={() => deleteTodo(id)}
+      onClick={async () => {
+        await deleteTodo(id);
+      }}
       type={"button"}
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">

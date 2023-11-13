@@ -4,6 +4,7 @@ import { LeftItemsCounter } from "@components/ui/LeftItemsCounter";
 import { ClearCompleted } from "@components/ui/ClearCompleted";
 import { Tabs } from "@components/Tabs";
 import * as React from "react";
+import { useEffect } from "react";
 
 export const Navbar = () => {
   const [todos, clearCompleted] = useAppStore((state) => [

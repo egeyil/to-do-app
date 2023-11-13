@@ -4,7 +4,7 @@ import { Checkbox } from "@components/ui/Checkbox";
 import { DeleteButton } from "@components/ui/DeleteButton";
 import React, { FormEvent, useEffect, useState } from "react";
 import { useAppStore } from "@lib/store";
-import { TodoInput } from "@components/ui/TodoInput";
+import { TodoInput } from "@components/TodoInput";
 
 interface TodoItemProps {
   todo: Todo;
@@ -21,11 +21,16 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
   const [checked, setChecked] = useState<boolean>(todo.checked);
 
   useEffect(() => {
-    updateTodo({ id: todo.id, content: input, checked });
+    (async () => {
+      await updateTodo({ id: todo.id, content: input, checked });
+    })();
   }, [input, checked]);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    updateTodo({ id: todo.id, content: input, checked });
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    console.log("handleSubmit");
+    e.preventDefault();
+    if (input === "") return;
+    await updateTodo({ id: todo.id, content: input, checked });
   };
 
   return (
@@ -34,12 +39,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
       className={
         "group flex items-center justify-between gap-3 px-4 py-3 text-sm dark:bg-dmVeryDarkDesaturatedBlue sm:gap-5 sm:px-6 sm:py-4 sm:text-base"
       }
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (input !== "") {
-          handleSubmit(e);
-        }
-      }}
+      onSubmit={handleSubmit}
     >
       <div className={"p-0.5"}>
         <Checkbox checked={checked} setChecked={setChecked} />

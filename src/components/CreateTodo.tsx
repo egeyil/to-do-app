@@ -3,7 +3,7 @@
 import { Checkbox } from "@components/ui/Checkbox";
 import { FormEvent, useState, useRef, useEffect } from "react";
 import { useAppStore } from "@lib/store";
-import { TodoInput } from "@components/ui/TodoInput";
+import { TodoInput } from "@components/TodoInput";
 import { CreateButton } from "@components/ui/CreateButton";
 
 export function CreateTodo() {
@@ -17,12 +17,12 @@ export function CreateTodo() {
     if (inputRef.current) inputRef.current.focus();
   }, [checked]);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (input !== "") {
       let id = (Math.random() + 1).toString(36).substring(7); // TODO - Will change this when creating todos in the db.
-      addTodo({ id, content: input, checked });
+      await addTodo({ id, content: input, checked });
       setInput("");
       setChecked(false);
       if (inputRef.current) inputRef.current.focus();

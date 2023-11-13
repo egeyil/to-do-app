@@ -1,4 +1,4 @@
-import constants from "@lib/constants";
+import { constants } from "@lib/constants";
 import React, { SetStateAction } from "react";
 import { forwardRef } from "react";
 
@@ -20,7 +20,7 @@ export const TodoInput = forwardRef<HTMLInputElement, TodoInputProps>(
         ref={ref}
         placeholder={placeholder}
         className={
-          "dark:hover:text-dmMainTextHover w-full pr-3 caret-primaryBrightBlue transition-all duration-300 placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue"
+          "w-full pr-3 caret-primaryBrightBlue transition-all duration-300 placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue dark:hover:text-dmMainTextHover"
         }
         name={name}
         type="text"
