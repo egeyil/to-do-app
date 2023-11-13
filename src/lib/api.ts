@@ -30,7 +30,7 @@ export async function createTodo(todo: Todo) {
   return res.json();
 }
 
-export async function updateTodo(id: string, data: Todo) {
+export async function updateTodoWithId(id: string, data: Todo) {
   const res = await fetch(`${apiUrl}/todos/${id}`, {
     method: "PUT",
     headers: {

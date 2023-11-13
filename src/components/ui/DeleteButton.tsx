@@ -1,18 +1,17 @@
 import { Button } from "@components/ui/Button";
 
 interface DeleteButtonProps {
-  id: string;
-  deleteTodo: (id: string) => Promise<void>;
+  handleDelete: () => Promise<void>;
 }
 
-export const DeleteButton = ({ id, deleteTodo }: DeleteButtonProps) => {
+export const DeleteButton = ({ handleDelete }: DeleteButtonProps) => {
   return (
     <Button
       className={
         "flex h-6 w-6 items-center justify-center p-0.5 text-dmDarkGrayishBlue opacity-100 focus:opacity-50 sm:opacity-0 sm:group-hover:opacity-100"
       }
       onClick={async () => {
-        await deleteTodo(id);
+        await handleDelete();
       }}
       type={"button"}
     >

@@ -6,8 +6,6 @@ import * as React from "react";
 import { Header } from "@components/Header";
 
 import { Josefin_Sans } from "next/font/google";
-import { Tabs } from "@components/Tabs";
-import { Navbar } from "@components/Navbar";
 
 // If loading a variable font, you don't need to specify the font weight
 const josefinSans = Josefin_Sans({
@@ -30,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={josefinSans.className}>
       <body
         className={
-          "text-lmMainText dark:text-dmMainText overflow-y-hidden bg-lmVeryLightGray bg-mobile-light bg-contain bg-no-repeat transition-all dark:bg-dmVeryDarkBlue dark:bg-mobile-dark sm:bg-desktop-light sm:dark:bg-desktop-dark"
+          "bg-lmVeryLightGray overflow-y-hidden bg-mobile-light bg-contain bg-no-repeat text-lmMainText transition-all dark:bg-dmVeryDarkBlue dark:bg-mobile-dark dark:text-dmMainText sm:bg-desktop-light sm:dark:bg-desktop-dark"
         }
       >
         <ThemeProvider>
@@ -41,7 +39,6 @@ export default function RootLayout({
           >
             <Header />
             {children}
-            <Navbar />
           </main>
         </ThemeProvider>
       </body>

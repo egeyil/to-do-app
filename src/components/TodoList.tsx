@@ -2,16 +2,24 @@
 import { useAppStore } from "@lib/store";
 import { TodoItem } from "@components/TodoItem";
 import { Todo } from "@lib/types";
+import { useEffect } from "react";
+import * as React from "react";
+import { Navbar } from "@components/Navbar";
 
 interface TodoListProps {
   todos: Todo[];
 }
 
 export const TodoList = ({ todos }: TodoListProps) => {
-  const setTodos = useAppStore((state) => state.setTodos);
-  const currentTab = useAppStore((state) => state.tab);
+  const [currentTab, setTodos, stateTodos] = useAppStore((state) => [
+    state.tab,
+    state.setTodos,
+    state.todos,
+  ]);
 
-  setTodos(todos);
+  useEffect(() => {
+    setTodos(todos);
+  }, []);
 
   const filteredTodos = todos?.filter((todo) => {
     if (currentTab === "All") return true;
@@ -21,15 +29,18 @@ export const TodoList = ({ todos }: TodoListProps) => {
   });
 
   return (
-    <section className={"flex flex-col overflow-y-hidden rounded-t-md"}>
-      <ul className={"h-full overflow-y-auto"}>
-        {filteredTodos?.map((todo) => (
-          <li key={todo.id}>
-            <TodoItem todo={todo} />
-            <hr className={"border-dmSecondaryText"} />
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <section className={"flex flex-col overflow-y-hidden rounded-t-md"}>
+        <ul className={"h-full overflow-y-auto"}>
+          {filteredTodos?.map((todo) => (
+            <li key={todo.id}>
+              <TodoItem todo={todo} />
+              <hr className={"border-dmSecondaryText"} />
+            </li>
+          ))}
+        </ul>
+      </section>
+      <Navbar />
+    </>
   );
 };

@@ -7,11 +7,12 @@ interface TodoInputProps {
   setInput: React.Dispatch<SetStateAction<string>>;
   placeholder?: string;
   name?: string;
+  checked?: boolean;
 }
 
 export const TodoInput = forwardRef<HTMLInputElement, TodoInputProps>(
   function TodoInput(
-    { input, setInput, placeholder, name }: TodoInputProps,
+    { input, setInput, placeholder, name, checked }: TodoInputProps,
     ref,
   ) {
     return (
@@ -20,7 +21,8 @@ export const TodoInput = forwardRef<HTMLInputElement, TodoInputProps>(
         ref={ref}
         placeholder={placeholder}
         className={
-          "w-full pr-3 caret-primaryBrightBlue transition-all duration-300 placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue dark:hover:text-dmMainTextHover"
+          "w-full pr-3 caret-primaryBrightBlue transition-all duration-300 placeholder:text-dmDarkGrayishBlue hover:cursor-pointer focus:outline-0 dark:bg-dmVeryDarkDesaturatedBlue dark:hover:text-dmMainTextHover" +
+          (checked ? " text-dmSecondaryText line-through" : "")
         }
         name={name}
         type="text"
@@ -29,6 +31,9 @@ export const TodoInput = forwardRef<HTMLInputElement, TodoInputProps>(
         onChange={(e) => {
           setInput(e.target.value);
         }}
+        // onKeyDown={(e) => {
+        //
+        // }}
       />
     );
   },

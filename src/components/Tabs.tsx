@@ -10,8 +10,8 @@ export const Tabs = () => {
   const completed = useCompletedTodos();
   const incomplete = useIncompleteTodos();
 
-  if (completed.length === 0 && currentTab === "Completed") setTab("All");
-  if (incomplete.length === 0 && currentTab === "Active") setTab("All");
+  if (completed?.length === 0 && currentTab === "Completed") setTab("All");
+  if (incomplete?.length === 0 && currentTab === "Active") setTab("All");
 
   return (
     <>
@@ -20,13 +20,13 @@ export const Tabs = () => {
         tabName={"Active"}
         setTab={setTab}
         currentTab={currentTab}
-        disabled={incomplete.length === 0}
+        disabled={incomplete?.length === 0}
       />
       <TabButton
         tabName={"Completed"}
         setTab={setTab}
         currentTab={currentTab}
-        disabled={completed.length === 0}
+        disabled={completed?.length === 0}
       />
     </>
   );
