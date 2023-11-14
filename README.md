@@ -23,5 +23,7 @@ Notes:
 - There are also functions inside the code to support async api calls, but a backend needs to be implemented.
 - These async functions were tested with json-server package.
 
+## Lighthouse Scores: 
+![Screenshot 2023-11-14 at 00 29 57](https://github.com/egeyil/to-do-app/assets/85133392/1e86d267-dc3e-4ee9-9992-d31c5703a1af)
 
 
